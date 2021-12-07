@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/friendsFragment"
         android:icon="@drawable/friends"
-        android:title="friends" />
+        android:title="친구들" />
     <item android:id="@+id/friendFragment"
         android:icon="@drawable/friend"
-        android:title="friend" />
+        android:title="내 친구" />
     <item android:id="@+id/chattingFragment"
         android:icon="@drawable/chatting"
-        android:title="chtting" />
+        android:title="채팅" />
     <item android:id="@+id/profileFragment"
         android:icon="@drawable/profile"
-        android:title="profile" />
+        android:title="프로필" />
     <item android:id="@+id/settingFragment"
         android:icon="@drawable/setting"
-        android:title="setting" />
+        android:title="설정" />
 </menu>
