@@ -10,29 +10,31 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.chatting.R
 import com.example.chatting.databinding.FragmentFriendBinding
+import com.example.chatting.databinding.FragmentReceivedBinding
 
-class FriendFragment : Fragment() {
-    private var mBinding : FragmentFriendBinding? = null
+class ReceivedFragment : Fragment() {
+    private var mBinding : FragmentReceivedBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFriendBinding.inflate(inflater,container,false)
+        val binding = FragmentReceivedBinding.inflate(inflater,container,false)
         mBinding = binding
 
-        //received fragment로 이동
-        mBinding!!.receivedText.setOnClickListener {
-            it.findNavController().navigate(R.id.action_friendFragment_to_receivedFragment)
+        //friend fragment로 이동
+        mBinding!!.friendText.setOnClickListener {
+            it.findNavController().navigate(R.id.action_receivedFragment_to_friendFragment)
         }
 
         //send fragment로 이동
         mBinding!!.sendText.setOnClickListener {
-            it.findNavController().navigate(R.id.action_friendFragment_to_sendFragment)
+            it.findNavController().navigate(R.id.action_receivedFragment_to_sendFragment)
         }
 
         return mBinding?.root
     }
+
     override fun onDestroyView() {
         mBinding = null
         super.onDestroyView()

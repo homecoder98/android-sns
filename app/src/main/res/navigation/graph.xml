@@ -18,7 +18,14 @@
         android:id="@+id/friendFragment"
         android:name="com.example.chatting.fragments.FriendFragment"
         android:label="friendFragment"
-        tools:layout="@layout/fragment_friend"/>
+        tools:layout="@layout/fragment_friend">
+        <action
+            android:id="@+id/action_friendFragment_to_receivedFragment"
+            app:destination="@id/receivedFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_sendFragment"
+            app:destination="@id/sendFragment" />
+    </fragment>
     <fragment
         android:id="@+id/friendsFragment"
         android:name="com.example.chatting.fragments.FriendsFragment"
@@ -29,4 +36,28 @@
         android:name="com.example.chatting.fragments.ProfileFragment"
         android:label="profileFragment"
         tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/receivedFragment"
+        android:name="com.example.chatting.fragments.ReceivedFragment"
+        android:label="ReceivedFragment"
+        tools:layout="@layout/fragment_received">
+        <action
+            android:id="@+id/action_receivedFragment_to_friendFragment"
+            app:destination="@id/friendFragment" />
+        <action
+            android:id="@+id/action_receivedFragment_to_sendFragment"
+            app:destination="@id/sendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendFragment"
+        android:name="com.example.chatting.fragments.SendFragment"
+        android:label="SendFragment"
+        tools:layout="@layout/fragment_send">
+        <action
+            android:id="@+id/action_sendFragment_to_friendFragment"
+            app:destination="@id/friendFragment" />
+        <action
+            android:id="@+id/action_sendFragment_to_receivedFragment"
+            app:destination="@id/receivedFragment" />
+    </fragment>
 </navigation>
