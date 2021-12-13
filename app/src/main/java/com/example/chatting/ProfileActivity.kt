@@ -11,6 +11,7 @@ import android.widget.ImageView
 import androidx.core.graphics.drawable.toBitmap
 import com.example.chatting.databinding.ActivityMainBinding
 import com.example.chatting.databinding.ActivityProfileBinding
+import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -21,7 +22,8 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imageView.setImageResource(intent.getIntExtra("img",R.drawable.profile))
+        var src = intent.getStringExtra("img")
+        Picasso.get().load(src).error(R.drawable.profile).into(binding.imageView)
         binding.nickname.text = intent.getStringExtra("nickname")
         binding.introduce.text = intent.getStringExtra("introduce")
 

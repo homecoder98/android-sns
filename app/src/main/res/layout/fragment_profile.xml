@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <import type="android.view.View"/>
+    
+    <variable
+        name="profile"
+        type="com.example.chatting.db.Profile" />
+</data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#d3d3d3"
     android:orientation="vertical"
     android:id="@+id/profileFragment"
@@ -21,10 +31,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profile_image"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -32,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/change_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/borderline"
@@ -51,7 +61,8 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="오영택"
+                android:id="@+id/nickname"
+                android:text="@{profile.nickname}"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:gravity="center"
@@ -62,6 +73,7 @@
             android:layout_height="1dp"
             android:background="#e3e3e3"/>
         <LinearLayout
+            android:id="@+id/change_sex_btn"
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -72,7 +84,8 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="남성"
+                android:id="@+id/sex"
+                android:text="@{profile.sex}"
                 android:layout_width="0dp"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -93,7 +106,8 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="20"
+                android:id="@+id/age"
+                android:text="@{profile.age}"
                 android:layout_width="0dp"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -114,33 +128,80 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="서울"
+                android:id="@+id/local"
+                android:text="@{profile.local}"
                 android:layout_width="0dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/borderline"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
+        android:layout_marginVertical="10dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/borderline"
+        android:scrollbars="vertical"
         android:orientation="vertical">
+
         <TextView
-            android:layout_marginVertical="5dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="자기소개"/>
+            android:layout_gravity="center"
+            android:layout_marginVertical="5dp"
+            android:text="자기소개" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#e3e3e3"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="안녕하세요"/>
+            android:background="#e3e3e3" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{profile.introduce}" />
+        </ScrollView>
+
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/change_nickname_btn"
+            android:text="닉네임 변경"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/change_local_btn"
+            android:text="지역 변경"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/change_introduce_btn"
+            android:text="소개 변경"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/save_profile_btn"
+        android:layout_gravity="center"
+        android:background="@drawable/borderbtn"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="저장"/>
 </LinearLayout>
+</layout>

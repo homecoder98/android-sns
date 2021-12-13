@@ -2,21 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.chatting">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
+        android:name="com.example.chatting.Myapplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Chatting">
+        android:theme="@style/Theme.Chatting"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ChattingRoomActivity"
+            android:exported="true" />
         <activity
             android:name=".ImageActivity"
-            android:exported="true" />
+            android:exported="true"></activity>
         <activity
             android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ChattingRoom"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
