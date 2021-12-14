@@ -20,6 +20,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.chatting.Myapplication
 import com.example.chatting.databinding.FragmentProfileBinding
 import com.example.chatting.db.Profile
@@ -48,8 +49,13 @@ class ProfileFragment : Fragment() {
         val local = Myapplication.prefs.getString("local","서울")
         val introduce = Myapplication.prefs.getString("introduce","안녕하세요")
         val picture = Myapplication.prefs.getString("picture","")
+        Log.d("profile",picture)
         try{
-            mBinding!!.profileImage.setImageURI(Uri.parse(picture))
+            Glide.with(inflater.context)
+                .load(Uri.parse(picture))
+                .into(mBinding!!.profileImage)
+
+//            mBinding!!.profileImage.setImageURI(Uri.parse(picture))
         }catch (e : java.lang.Exception){
 
         }
@@ -165,12 +171,18 @@ class ProfileFragment : Fragment() {
 
                 try{
                     currentImageUri?.let {
-                        mBinding!!.profileImage.setImageURI(it)
+//                        mBinding!!.profileImage.setImageURI(it)
+
+                        Glide.with(layoutInflater.context)
+                            .load(it)
+                            .into(mBinding!!.profileImage)
 
 //                        layoutInflater.context.contentResolver.takePersistableUriPermission(it,Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
 //                        picture_uri = it.toString()
-                        val path = getFullPathFromUri(layoutInflater.context,it)
-                        Myapplication.prefs.setString("picture",path!!)
+
+//                        val path = getFullPathFromUri(layoutInflater.context,it)
+
+                        Myapplication.prefs.setString("picture",it.toString())
                     }
                 }catch(e : Exception)
                 {
@@ -188,41 +200,41 @@ class ProfileFragment : Fragment() {
         mBinding = null
         super.onDestroyView()
     }
-    fun getFullPathFromUri(ctx: Context?, fileUri: Uri?): String? {
-        var fullPath: String? = null
-        val column = "_data"
-        var cursor: Cursor? = ctx?.getContentResolver()?.query(fileUri!!, null, null, null, null)
-        if (cursor != null) {
-            cursor.moveToFirst()
-            var document_id = cursor.getString(0)
-            if (document_id == null) {
-                for (i in 0 until cursor.columnCount) {
-                    if (column.equals(cursor.getColumnName(i), ignoreCase = true)) {
-                        fullPath = cursor.getString(i)
-                        break
-                    }
-                }
-            } else {
-                document_id = document_id.substring(document_id.lastIndexOf(":") + 1)
-                cursor.close()
-                val projection = arrayOf(column)
-                try {
-                    cursor = ctx?.getContentResolver()?.query(
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        projection,
-                        MediaStore.Images.Media._ID + " = ? ",
-                        arrayOf(document_id),
-                        null
-                    )
-                    if (cursor != null) {
-                        cursor.moveToFirst()
-                        fullPath = cursor.getString(cursor.getColumnIndexOrThrow(column))
-                    }
-                } finally {
-                    if (cursor != null) cursor.close()
-                }
-            }
-        }
-        return fullPath
-    }
+//    fun getFullPathFromUri(ctx: Context?, fileUri: Uri?): String? {
+//        var fullPath: String? = null
+//        val column = "_data"
+//        var cursor: Cursor? = ctx?.getContentResolver()?.query(fileUri!!, null, null, null, null)
+//        if (cursor != null) {
+//            cursor.moveToFirst()
+//            var document_id = cursor.getString(0)
+//            if (document_id == null) {
+//                for (i in 0 until cursor.columnCount) {
+//                    if (column.equals(cursor.getColumnName(i), ignoreCase = true)) {
+//                        fullPath = cursor.getString(i)
+//                        break
+//                    }
+//                }
+//            } else {
+//                document_id = document_id.substring(document_id.lastIndexOf(":") + 1)
+//                cursor.close()
+//                val projection = arrayOf(column)
+//                try {
+//                    cursor = ctx?.getContentResolver()?.query(
+//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+//                        projection,
+//                        MediaStore.Images.Media._ID + " = ? ",
+//                        arrayOf(document_id),
+//                        null
+//                    )
+//                    if (cursor != null) {
+//                        cursor.moveToFirst()
+//                        fullPath = cursor.getString(cursor.getColumnIndexOrThrow(column))
+//                    }
+//                } finally {
+//                    if (cursor != null) cursor.close()
+//                }
+//            }
+//        }
+//        return fullPath
+//    }
 }

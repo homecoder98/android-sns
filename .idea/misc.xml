@@ -5,11 +5,14 @@
       <map>
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/drawable/borderbtn.xml" value="0.37552083333333336" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/drawable/borderline.xml" value="0.37552083333333336" />
+        <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/drawable/chatting_background.xml" value="0.37552083333333336" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/activity_chatting_room.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/activity_image.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/activity_main.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/activity_profile.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/chatting_item.xml" value="0.359375" />
+        <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/chatting_left_item.xml" value="0.359375" />
+        <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/chatting_right_item.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/dialog_item.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/fragment_chatting.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/fragment_chatting_room.xml" value="0.359375" />
