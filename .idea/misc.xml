@@ -20,13 +20,11 @@
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/fragment_send.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/fragment_setting.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/friend_item.xml" value="0.359375" />
+        <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/layout/received_item.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/menu/bottom_menu.xml" value="0.359375" />
         <entry key="..\:/Users/latch/AndroidStudioProjects/Chatting/app/src/main/res/menu/friend_menu.xml" value="0.359375" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/chatting/adapter/DialogAdapter.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

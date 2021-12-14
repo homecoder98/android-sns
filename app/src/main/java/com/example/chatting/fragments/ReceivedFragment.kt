@@ -8,9 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatting.R
+import com.example.chatting.adapter.FriendAdapter
+import com.example.chatting.adapter.ReceivedAdapter
 import com.example.chatting.databinding.FragmentFriendBinding
 import com.example.chatting.databinding.FragmentReceivedBinding
+import com.example.chatting.db.Profile
 
 class ReceivedFragment : Fragment() {
     private var mBinding : FragmentReceivedBinding? = null
@@ -27,10 +31,13 @@ class ReceivedFragment : Fragment() {
             it.findNavController().navigate(R.id.action_receivedFragment_to_friendFragment)
         }
 
-        //send fragment로 이동
-        mBinding!!.sendText.setOnClickListener {
-            it.findNavController().navigate(R.id.action_receivedFragment_to_sendFragment)
-        }
+        val profile = Profile("운영자","남자","25","경기","하이루", "")
+        val friend = mutableListOf<Profile>()
+        friend.add(profile)
+        val friendAdapter = ReceivedAdapter(friend)
+
+        mBinding!!.receivedRecyclerview.adapter = friendAdapter
+        mBinding!!.receivedRecyclerview.layoutManager = LinearLayoutManager(context)
 
         return mBinding?.root
     }
