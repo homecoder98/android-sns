@@ -2,11 +2,14 @@ package com.example.chatting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.chatting.databinding.ActivityMainBinding
 import com.example.chatting.db.AppDatabase
+import com.example.chatting.singlton.mSocket
+import io.socket.emitter.Emitter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -16,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val socket = mSocket.socket
+        socket?.connect()
+        socket?.on("msg", Emitter.Listener {
+            Log.d("socket",it[0].toString())
+        })
 
         //메인 화면에 네비게이션 붙이기
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host) as NavHostFragment
@@ -32,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        mSocket.socket?.disconnect()
         super.onDestroy()
         if(db!=null)
             db = null

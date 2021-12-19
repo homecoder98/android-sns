@@ -3,6 +3,7 @@ package com.example.chatting
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,11 +11,20 @@ import com.example.chatting.adapter.ChattingRoomAdapter
 import com.example.chatting.databinding.ActivityChattingRoomBinding
 import com.example.chatting.databinding.ActivityMainBinding
 import com.example.chatting.db.Profile
+import com.example.chatting.singlton.mSocket
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import io.socket.client.IO
+import io.socket.client.Socket
+import io.socket.emitter.Emitter
+import org.json.JSONObject
+
 
 class ChattingRoomActivity : AppCompatActivity() {
+//    private var socket = mSocket.socket
     private lateinit var binding : ActivityChattingRoomBinding
     private val items = mutableListOf<Profile>()
-    public val adepter = ChattingRoomAdapter(items)
+    val adepter = ChattingRoomAdapter(items)
     private val OPEN_GALLERY = 1
     private val RESULT_OK = -1
     private val RESULT_CANCELED = 0
@@ -23,6 +33,13 @@ class ChattingRoomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChattingRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //소켓 연결
+//        mSocket.connectSocket()
+
+//        socket?.on(Socket.EVENT_CONNECT, Emitter.Listener {
+//            Log.d("socket",it.toString())
+//        })
 
         var anonymous = intent.getStringExtra("anonymous")
         binding.anonymous.text = anonymous
@@ -77,5 +94,11 @@ class ChattingRoomActivity : AppCompatActivity() {
                 Toast.makeText(layoutInflater.context, "사진 선택 취소", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    override fun onDestroy() {
+//        socket?.disconnect()
+////        socket = null
+        super.onDestroy()
     }
 }
