@@ -29,15 +29,31 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/is_send_friend"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:paddingVertical="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="친구 신청을 보냈습니다"/>
     <LinearLayout
+        android:id="@+id/send_friend_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
+            android:id="@+id/send_friend_edit"
+            android:textColor="#000"
+            android:textColorHint="#939393"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="친구 신청시 보낼 메세지를 적어주세요"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:hint="친구 신청시 보낼 메세지를 적어주세요" />
+
         <Button
+            android:id="@+id/send_friend_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="전송"/>
@@ -161,6 +177,7 @@
             android:layout_height="1dp"
             android:background="#e3e3e3"/>
         <TextView
+            android:padding="10dp"
             android:id="@+id/introduce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

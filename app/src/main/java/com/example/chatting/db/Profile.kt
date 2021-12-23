@@ -17,5 +17,7 @@ data class Profile(
     @Nullable
     var introduce: String?,
     @Nullable
-    var profile: String?
+    var profile: String?,
+    @Nullable
+    var is_right:Boolean=true
 )

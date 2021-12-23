@@ -20,12 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val socket = mSocket.socket
-        socket?.connect()
-        socket?.on("msg", Emitter.Listener {
-            Log.d("socket",it[0].toString())
-        })
-
         //메인 화면에 네비게이션 붙이기
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host) as NavHostFragment
         val navController = navHostFragment.navController

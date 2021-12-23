@@ -49,13 +49,11 @@ class ProfileFragment : Fragment() {
         val local = Myapplication.prefs.getString("local","서울")
         val introduce = Myapplication.prefs.getString("introduce","안녕하세요")
         val picture = Myapplication.prefs.getString("picture","")
-        Log.d("profile",picture)
+
         try{
             Glide.with(inflater.context)
                 .load(Uri.parse(picture))
                 .into(mBinding!!.profileImage)
-
-//            mBinding!!.profileImage.setImageURI(Uri.parse(picture))
         }catch (e : java.lang.Exception){
 
         }
@@ -200,41 +198,4 @@ class ProfileFragment : Fragment() {
         mBinding = null
         super.onDestroyView()
     }
-//    fun getFullPathFromUri(ctx: Context?, fileUri: Uri?): String? {
-//        var fullPath: String? = null
-//        val column = "_data"
-//        var cursor: Cursor? = ctx?.getContentResolver()?.query(fileUri!!, null, null, null, null)
-//        if (cursor != null) {
-//            cursor.moveToFirst()
-//            var document_id = cursor.getString(0)
-//            if (document_id == null) {
-//                for (i in 0 until cursor.columnCount) {
-//                    if (column.equals(cursor.getColumnName(i), ignoreCase = true)) {
-//                        fullPath = cursor.getString(i)
-//                        break
-//                    }
-//                }
-//            } else {
-//                document_id = document_id.substring(document_id.lastIndexOf(":") + 1)
-//                cursor.close()
-//                val projection = arrayOf(column)
-//                try {
-//                    cursor = ctx?.getContentResolver()?.query(
-//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                        projection,
-//                        MediaStore.Images.Media._ID + " = ? ",
-//                        arrayOf(document_id),
-//                        null
-//                    )
-//                    if (cursor != null) {
-//                        cursor.moveToFirst()
-//                        fullPath = cursor.getString(cursor.getColumnIndexOrThrow(column))
-//                    }
-//                } finally {
-//                    if (cursor != null) cursor.close()
-//                }
-//            }
-//        }
-//        return fullPath
-//    }
 }
