@@ -10,15 +10,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatting.ChattingRoomActivity
 import com.example.chatting.R
+import com.example.chatting.db.AppDatabase
 import com.example.chatting.db.Profile
 
 class ReceivedAdapter(profiles : MutableList<Profile>) : RecyclerView.Adapter<ReceivedAdapter.ReceivedViewHolder>(){
     var items : MutableList<Profile> = profiles
     lateinit var context : Context
+    private var db : AppDatabase? = null
 //    lateinit var intent : Intent
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReceivedViewHolder {
         context = parent.context
+        db = AppDatabase.getInstance(context)
 //        intent = Intent(context, ChattingRoomActivity::class.java)
         return ReceivedAdapter.ReceivedViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.received_item, parent, false)
@@ -36,9 +39,16 @@ class ReceivedAdapter(profiles : MutableList<Profile>) : RecyclerView.Adapter<Re
 //        }
         holder.accept_btn.setOnClickListener {
             //친구 받기
+            //db에 추가
+            val profile = Profile(item.nickname,item.sex,item.age,item.local,item.introduce,"")
+            db?.profileDao()?.inserProfile(profile)
+            items.removeAt(position)
+            this.notifyItemChanged(position)
         }
         holder.deny_btn.setOnClickListener {
             //친구 거절
+            items.removeAt(position)
+            this.notifyItemChanged(position)
         }
     }
 

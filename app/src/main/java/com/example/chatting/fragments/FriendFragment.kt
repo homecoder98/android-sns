@@ -18,12 +18,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatting.R
 import com.example.chatting.adapter.FriendAdapter
 import com.example.chatting.databinding.FragmentFriendBinding
+import com.example.chatting.db.AppDatabase
 import com.example.chatting.db.Profile
 import kotlinx.coroutines.CoroutineScope
 import java.io.ByteArrayOutputStream
 
 class FriendFragment : Fragment() {
     private var mBinding : FragmentFriendBinding? = null
+    private var db : AppDatabase? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +43,17 @@ class FriendFragment : Fragment() {
         val profile = Profile("운영자","남자","25","경기","하이루", "")
         val friend = mutableListOf<Profile>()
         friend.add(profile)
+
+        db = AppDatabase.getInstance(inflater.context)
+        db?.profileDao()?.getAll().let {
+            if(it!=null){
+                Log.d("db",it.toString())
+                for(i in it)
+                    friend.add(i)
+            }
+        }
+
+
         val friendAdapter = FriendAdapter(friend)
 
         mBinding!!.friendRecyclerview.adapter = friendAdapter

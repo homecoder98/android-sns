@@ -14,10 +14,12 @@ import com.example.chatting.adapter.FriendAdapter
 import com.example.chatting.adapter.ReceivedAdapter
 import com.example.chatting.databinding.FragmentFriendBinding
 import com.example.chatting.databinding.FragmentReceivedBinding
+import com.example.chatting.db.AppDatabase
 import com.example.chatting.db.Profile
 
 class ReceivedFragment : Fragment() {
     private var mBinding : FragmentReceivedBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +33,7 @@ class ReceivedFragment : Fragment() {
             it.findNavController().navigate(R.id.action_receivedFragment_to_friendFragment)
         }
 
-        val profile = Profile("운영자","남자","25","경기","하이루", "")
+        val profile = Profile("운영자2","남자","25","경기","하이루2", "")
         val friend = mutableListOf<Profile>()
         friend.add(profile)
         val friendAdapter = ReceivedAdapter(friend)
